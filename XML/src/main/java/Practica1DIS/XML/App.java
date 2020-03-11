@@ -73,5 +73,6 @@ public class App
              producto.appendChild(pendientes);
              // Añado al elemento productos el elemento producto
              productos.appendChild(producto);
+
     }
 }
