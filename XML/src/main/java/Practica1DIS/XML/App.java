@@ -43,18 +43,18 @@ public class App
             Element producto = documento.createElement("producto");
  
             // codigo
-            Element codigo = documento.createElement("Codigo");
+            Element codigo = documento.createElement("codigo");
             Text textcodigo = documento.createTextNode("1111AAA");
             codigo.appendChild(textcodigo);
             producto.appendChild(codigo);
             //Nombre
-            Element nombre = documento.createElement("Nombre");
+            Element nombre = documento.createElement("nombre");
             Text textnombre = documento.createTextNode("Chanclas");
             nombre.appendChild(textnombre);
             producto.appendChild(nombre);
  
             // Descripción
-            Element descripcion = documento.createElement("Descripción");
+            Element descripcion = documento.createElement("descripción");
             Text textdescripcion = documento.createTextNode("Para pies");
             descripcion.appendChild(textdescripcion);
             producto.appendChild(descripcion);
@@ -86,7 +86,7 @@ public class App
             producto.appendChild(localizacion);
             
             // Pendientes de entrada en el almacen
-            Element pendientes = documento.createElement("Pendientes");
+            Element pendientes = documento.createElement("pendientes");
             Text textpendientes = documento.createTextNode("300");
             pendientes.appendChild(textpendientes);
             producto.appendChild(pendientes);
@@ -99,24 +99,24 @@ public class App
             Element clientes = documento.createElement("clientes");
             Element cliente = documento.createElement("cliente");
             // codigo
-            Element cnombre = documento.createElement("Nombre");
+            Element cnombre = documento.createElement("nombre");
             Text textcnombre = documento.createTextNode("Godofredo");
             nombre.appendChild(textcnombre);
             cliente.appendChild(cnombre);
             //Nombre
-            Element capellidos= documento.createElement("Apellidos");
+            Element capellidos= documento.createElement("apellidos");
             Text textcapellidos = documento.createTextNode("Perez Ortiz");
             capellidos.appendChild(textcapellidos);
             cliente.appendChild(capellidos);
  
             // Descripción
-            Element email = documento.createElement("Email");
+            Element email = documento.createElement("email");
             Text textemail = documento.createTextNode("godofredopor@email.com");
             email.appendChild(textemail);
             cliente.appendChild(email);
  
             // Telefono
-            Element telefono = documento.createElement("Telefono");
+            Element telefono = documento.createElement("telefono");
             Text texttelefono= documento.createTextNode("60175243");
             telefono.appendChild(texttelefono);
             cliente.appendChild(telefono);
@@ -124,19 +124,19 @@ public class App
             // Direccion de entrega
             Element direccionentrega = documento.createElement("direccion");
             // Calle
-            Element calle  = documento.createElement("Calle");
+            Element calle  = documento.createElement("calle");
             Text textcalle  = documento.createTextNode("Aljofrillos");
             //Numero 
-            Element numero = documento.createElement("Numero");
+            Element numero = documento.createElement("numero");
             Text textnumero  = documento.createTextNode("8");
             //Codigo postal
-            Element codigopostal  = documento.createElement("Codigopostal");
+            Element codigopostal  = documento.createElement("cp");
             Text textcodigopostal   = documento.createTextNode("29031"); 
             //Poblacion
-            Element poblacion  = documento.createElement("Poblacion");
+            Element poblacion  = documento.createElement("poblacion");
             Text textpoblacion   = documento.createTextNode("Guadalajara");             
             //Codigo postal
-            Element pais  = documento.createElement("Pais");
+            Element pais  = documento.createElement("pais");
             Text textpais  = documento.createTextNode("España"); 
             
             
@@ -166,33 +166,33 @@ public class App
             Element pedidos = documento.createElement("pedidos");
             Element pedido = documento.createElement("pedido");
             // Productos
-            Element productosp = documento.createElement("Productos");
+            Element productosp = documento.createElement("productos");
             Text textproductosp= documento.createTextNode("100");
             productosp.appendChild(textproductosp);
             pedido.appendChild(productosp);
             
             // Cantidad
-            Element cantidad = documento.createElement("Catindad");
+            Element cantidad = documento.createElement("cantidad");
             Text textcantidad = documento.createTextNode("100000");
             cantidad.appendChild(textcantidad);
             pedido.appendChild(cantidad);
             
             // Direccion de entrega
-            Element direccionentregap = documento.createElement("Direcciondeentrega");
+            Element direccionentregap = documento.createElement("direccion");
             // Calle
-            Element callep  = documento.createElement("Calle");
+            Element callep  = documento.createElement("calle");
             Text textcallep  = documento.createTextNode("Aljofrillos");
             //Numero 
-            Element numerop = documento.createElement("Numero");
+            Element numerop = documento.createElement("numero");
             Text textnumerop  = documento.createTextNode("8");
             //Codigo postal
-            Element codigopostalp  = documento.createElement("Codigopostal");
+            Element codigopostalp  = documento.createElement("cp");
             Text textcodigopostalp   = documento.createTextNode("29031"); 
             //Poblacion
-            Element poblacionp  = documento.createElement("Poblacion");
+            Element poblacionp  = documento.createElement("poblacion");
             Text textpoblacionp   = documento.createTextNode("Guadalajara");             
             //Codigo postal
-            Element paisp  = documento.createElement("Pais");
+            Element paisp  = documento.createElement("pais");
             Text textpaisp  = documento.createTextNode("España"); 
             
             callep.appendChild(textcallep);
@@ -211,13 +211,13 @@ public class App
             direccionentregap.appendChild(pais);
             pedido.appendChild(direccionentregap);       
 		    // Destinatario
-		    Element destinatario = documento.createElement("Destinatario");
+		    Element destinatario = documento.createElement("destinatario");
 		    Text textdestinatario = documento.createTextNode("Pepe");
 		    destinatario.appendChild(textdestinatario);
 		    pedido.appendChild(destinatario);
 		    
 		    // Fecha de entrega aproximada
-		    Element fechaentrega = documento.createElement("FechaEntrega");
+		    Element fechaentrega = documento.createElement("fechaEntrega");
 		    Text textfechaentrega = documento.createTextNode("11/03/2020");
 		    fechaentrega.appendChild(textfechaentrega);
 		    pedido.appendChild(fechaentrega);
