@@ -4,6 +4,7 @@ import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -76,6 +77,7 @@ public class App
             localizacion.appendChild(estanteria);
             estante.appendChild(textestante);
             localizacion.appendChild(estante);
+            
             producto.appendChild(localizacion);
             
             // Pendientes de entrada en el almacen
@@ -83,6 +85,7 @@ public class App
             Text textpendientes = documento.createTextNode("300");
             pendientes.appendChild(textpendientes);
             producto.appendChild(pendientes);
+            
             // Añado al elemento productos el elemento producto
             productos.appendChild(producto);
 
@@ -156,63 +159,65 @@ public class App
         
             //Añadimos el apartado para pedidos
             Element pedidos = documento.createElement("pedidos");
-            
+            Element pedido = documento.createElement("pedido");
             // Productos
             Element productosp = documento.createElement("Productos");
             Text textproductosp= documento.createTextNode("100");
             productosp.appendChild(textproductosp);
-            pedidos.appendChild(productosp);
+            pedido.appendChild(productosp);
             
             // Cantidad
             Element cantidad = documento.createElement("Catindad");
             Text textcantidad = documento.createTextNode("100000");
             cantidad.appendChild(textcantidad);
-            pedidos.appendChild(cantidad);
+            pedido.appendChild(cantidad);
             
             // Direccion de entrega
             Element direccionentregap = documento.createElement("Direcciondeentrega");
-		            // Calle
-		            Element callep  = documento.createElement("Calle");
-		            Text textcallep  = documento.createTextNode("Aljofrillos");
-		            //Numero 
-		            Element numerop = documento.createElement("Numero");
-		            Text textnumerop  = documento.createTextNode("8");
-		            //Codigo postal
-		            Element codigopostalp  = documento.createElement("Codigopostal");
-		            Text textcodigopostalp   = documento.createTextNode("29031"); 
-		            //Poblacion
-		            Element poblacionp  = documento.createElement("Poblacion");
-		            Text textpoblacionp   = documento.createTextNode("Guadalajara");             
-		            //Codigo postal
-		            Element paisp  = documento.createElement("Pais");
-		            Text textpaisp  = documento.createTextNode("España"); 
-		            
-		            callep.appendChild(textcallep);
-		            direccionentregap.appendChild(callep);
-		            
-		            numerop.appendChild(textnumerop);
-		            direccionentregap.appendChild(numerop);
-		            
-		            codigopostalp.appendChild(textcodigopostalp);
-		            direccionentregap.appendChild(codigopostalp);
-		            
-		            poblacionp.appendChild(textpoblacionp);
-		            direccionentregap.appendChild(poblacionp);
-		            
-		            paisp.appendChild(textpaisp);
-		            direccionentregap.appendChild(pais);
-		    pedidos.appendChild(direccionentregap);       
+            // Calle
+            Element callep  = documento.createElement("Calle");
+            Text textcallep  = documento.createTextNode("Aljofrillos");
+            //Numero 
+            Element numerop = documento.createElement("Numero");
+            Text textnumerop  = documento.createTextNode("8");
+            //Codigo postal
+            Element codigopostalp  = documento.createElement("Codigopostal");
+            Text textcodigopostalp   = documento.createTextNode("29031"); 
+            //Poblacion
+            Element poblacionp  = documento.createElement("Poblacion");
+            Text textpoblacionp   = documento.createTextNode("Guadalajara");             
+            //Codigo postal
+            Element paisp  = documento.createElement("Pais");
+            Text textpaisp  = documento.createTextNode("España"); 
+            
+            callep.appendChild(textcallep);
+            direccionentregap.appendChild(callep);
+            
+            numerop.appendChild(textnumerop);
+            direccionentregap.appendChild(numerop);
+            
+            codigopostalp.appendChild(textcodigopostalp);
+            direccionentregap.appendChild(codigopostalp);
+            
+            poblacionp.appendChild(textpoblacionp);
+            direccionentregap.appendChild(poblacionp);
+            
+            paisp.appendChild(textpaisp);
+            direccionentregap.appendChild(pais);
+            pedido.appendChild(direccionentregap);       
 		    // Destinatario
 		    Element destinatario = documento.createElement("Destinatario");
 		    Text textdestinatario = documento.createTextNode("Pepe");
 		    destinatario.appendChild(textdestinatario);
-		    pedidos.appendChild(destinatario);
+		    pedido.appendChild(destinatario);
 		    
 		    // Fecha de entrega aproximada
 		    Element fechaentrega = documento.createElement("FechaEntrega");
 		    Text textfechaentrega = documento.createTextNode("11/03/2020");
 		    fechaentrega.appendChild(textfechaentrega);
-		    pedidos.appendChild(fechaentrega);
+		    pedido.appendChild(fechaentrega);
+		    
+		    pedidos.appendChild(pedido);
 		    
             //Cerramos la dirección de entrega a clientes
 
@@ -228,6 +233,8 @@ public class App
  
             // Creo un transformer, se crea el fichero XML.
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(source, result); 
  
         } catch (ParserConfigurationException | TransformerException ex) {
