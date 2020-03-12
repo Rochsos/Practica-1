@@ -14,6 +14,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
+import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
@@ -28,6 +29,10 @@ public class App
             DocumentBuilder builder = factory.newDocumentBuilder();
             // Creo un DOMImplementation
             DOMImplementation implementation = builder.getDOMImplementation();
+            
+            DocumentType doctype = implementation.createDocumentType("doctype",
+                    "TIENDA",
+                    "tienda.dtd");
  
             // Creo un documento con un elemento raiz
             Document documento = implementation.createDocument(null, "tienda", null);
@@ -117,7 +122,7 @@ public class App
             cliente.appendChild(telefono);
             
             // Direccion de entrega
-            Element direccionentrega = documento.createElement("Direcciondeentrega");
+            Element direccionentrega = documento.createElement("direccion");
             // Calle
             Element calle  = documento.createElement("Calle");
             Text textcalle  = documento.createTextNode("Aljofrillos");
@@ -235,7 +240,11 @@ public class App
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.transform(source, result); 
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, doctype.getPublicId());
+            transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doctype.getSystemId());
+            
+            transformer.transform(source, result);
  
         } catch (ParserConfigurationException | TransformerException ex) {
             System.out.println(ex.getMessage());
